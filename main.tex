@@ -143,4 +143,180 @@ Changed the submit button to "Chin Tapak Dum Dum" through this code.
 \vspace{0.5cm}
 \newpage
 
+\section*{3. Calculator in C}
+\textbf{Lab Entry by Arnab Pandit}
+
+\subsection*{3.1 Introduction}
+In this document, I will present a detailed explanation of a simple calculator program developed in the C programming language. This calculator performs various arithmetic operations including addition, subtraction, multiplication, division, percentage calculation, squaring, and cubing of numbers. The design of this calculator is aimed at providing a user-friendly interface with robust input validation to ensure accurate results.
+
+\subsection*{3.2 Code}
+Below is the complete code for the calculator in C, followed by an explanation of each function and its role in the program.
+
+\begin{verbatim}
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+// Function declarations
+void addition();
+void subtract();
+void multiply();
+void divide();
+void percentage();
+void square();
+void cube();
+
+int main() {
+    int op;
+    do {
+        printf("Select an operation to perform in the C Calculator:\n");
+        printf("1. Addition\n");
+        printf("2. Subtraction\n");
+        printf("3. Multiplication\n");
+        printf("4. Division\n");
+        printf("5. Percentage\n");
+        printf("6. Square\n");
+        printf("7. Cube\n");
+        printf("8. Exit\n");
+        printf("Please make a choice: ");
+        
+        // Validate user input
+        while (scanf("%d", &op) != 1) {
+            printf("Invalid input! Please enter a number between 1 and 8: ");
+            while (getchar() != '\n'); // Clear the invalid input
+        }
+        
+        // Perform the selected operation
+        switch (op) {
+            case 1: addition(); break;
+            case 2: subtract(); break;
+            case 3: multiply(); break;
+            case 4: divide(); break;
+            case 5: percentage(); break;
+            case 6: square(); break;
+            case 7: cube(); break;
+            case 8: printf("Exiting the program.\n"); exit(0); // Exit the program
+            default: printf("Error! Invalid choice. Try again.\n");
+        }
+        printf("\n*\n");
+    } while (op != 8); // Repeat until the user chooses to exit
+    return 0;
+}
+\end{verbatim}
+% Continue with function definitions and explanations
+
+\subsection*{3.3 Function Definitions}
+
+\noindent \textbf{Addition Function:}
+\begin{verbatim}
+void addition() {
+    int i, num;
+    double sum = 0;
+    printf("How many numbers do you want to add? ");
+    
+    // Read the number of inputs and validate it
+    while (scanf("%d", &num) != 1 || num <= 0) {
+        printf("Invalid input! Enter a positive number: ");
+        while (getchar() != '\n'); // Clear the invalid input
+    }
+    
+    printf("Enter the numbers:\n");
+    for (i = 1; i <= num; i++) {
+        double f_num;
+        while (scanf("%lf", &f_num) != 1) {
+            printf("Invalid input! Enter a valid number: ");
+            while (getchar() != '\n'); // Clear the invalid input
+        }
+        sum += f_num;
+    }
+    
+    // Display the result
+    printf("Total sum of the numbers = %.2lf\n", sum);
+}
+\end{verbatim}
+
+\noindent \textbf{Subtraction Function:}
+\begin{verbatim}
+void subtract() {
+    double n1, n2;
+    printf("Enter the first number: ");
+    scanf("%lf", &n1);
+    printf("Enter the second number: ");
+    scanf("%lf", &n2);
+    printf("The result of %.2lf - %.2lf is: %.2lf\n", n1, n2, n1 - n2);
+}
+\end{verbatim}
+
+\noindent \textbf{Multiplication Function:}
+\begin{verbatim}
+void multiply() {
+    double n1, n2;
+    printf("Enter the first number: ");
+    scanf("%lf", &n1);
+    printf("Enter the second number: ");
+    scanf("%lf", &n2);
+    printf("The result of %.2lf * %.2lf is: %.2lf\n", n1, n2, n1 * n2);
+}
+\end{verbatim}
+
+\noindent \textbf{Division Function:}
+\begin{verbatim}
+void divide() {
+    double n1, n2;
+    printf("Enter the first number: ");
+    scanf("%lf", &n1);
+    printf("Enter the second number: ");
+    scanf("%lf", &n2);
+    
+    if (n2 != 0) {
+        printf("The result of %.2lf / %.2lf is: %.2lf\n", n1, n2, n1 / n2);
+    } else {
+        printf("Error! Division by zero is not allowed.\n");
+    }
+}
+\end{verbatim}
+
+\newpage
+
+\noindent \textbf{Percentage Function:}
+\begin{verbatim}
+void percentage() {
+    double value, percent;
+    printf("Enter the value: ");
+    scanf("%lf", &value);
+    printf("Enter the percentage: ");
+    scanf("%lf", &percent);
+    printf("%.2lf percent of %.2lf is: %.2lf\n", percent, value, (percent / 100) * value);
+}
+\end{verbatim}
+
+\noindent \textbf{Square Function:}
+\begin{verbatim}
+void square() {
+    double n1;
+    printf("Enter a number to get the square: ");
+    scanf("%lf", &n1);
+    printf("The square of %.2lf is: %.2lf\n", n1, n1 * n1);
+}
+\end{verbatim}
+
+\noindent \textbf{Cube Function:}
+\begin{verbatim}
+void cube() {
+    double n1;
+    printf("Enter a number to get the cube: ");
+    scanf("%lf", &n1);
+    printf("The cube of %.2lf is: %.2lf\n", n1, n1 * n1 * n1);
+}
+\end{verbatim}
+
+\subsection*{3.4 Conclusion}
+In conclusion, the simple calculator program developed in C provides a comprehensive tool for performing basic arithmetic operations. This calculator covers a range of functions including addition, subtraction, multiplication, division, percentage calculation, and the computation of squares and cubes of numbers. Each function is designed with user-friendly prompts and robust input validation to ensure accuracy and ease of use.
+
+The program demonstrates effective use of functions to modulate the code, making it both organized and easy to maintain. By implementing input validation and error handling, the calculator minimizes the risk of user errors and enhances the overall user experience.
+
+This project not only highlights fundamental programming concepts such as function definition and control structures but also showcases practical application in developing tools for everyday use. This simple calculator serves as a solid foundation for building more complex applications and improving programming skills in C.
+
+\newpage
+
 \end{document}
